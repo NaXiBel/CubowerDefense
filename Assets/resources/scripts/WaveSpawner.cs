@@ -28,14 +28,6 @@ public class WaveSpawner : MonoBehaviour {
 
     }
 
-    /**
-     * Time.deltatime est le temps passé depuis la dernière frame.
-     * countdown -= Time.deltaTime revient à dire : "Décrémenter de 1 
-     * toutes les secondes".
-     * 
-     * Dès le démarrage, la vague apparaîtra après environ [countdown - val initiale] secondes,
-     * elle se renouvellera toutes les [timeBetweenWaves] secondes.
-     * */
     void Update() {
 
         if(_currentWave == null) {
