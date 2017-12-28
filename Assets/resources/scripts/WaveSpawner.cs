@@ -7,7 +7,6 @@ public class WaveSpawner : MonoBehaviour {
     private static GameObject _enemyPrefab;
     private static GameObject _wavePrefab;
     private static Transform _spawnPoint;
-    private static Text _waveCountDownText;
     private static float _timeBetweenWaves = 5f;
     private static float _countdown = 2f;
     private static int _waveIndex = 0;
@@ -23,7 +22,7 @@ public class WaveSpawner : MonoBehaviour {
         _enemyPrefab = ((GameObject)Resources.Load("prefabs/Enemy", typeof(GameObject)));
         _wavePrefab = ((GameObject)Resources.Load("prefabs/Wave", typeof(GameObject)));
         _spawnPoint = GameObject.Find("START").transform;
-        _waveCountDownText = GameObject.Find("Text").GetComponent<Text>();
+
 
 
     }
@@ -38,7 +37,6 @@ public class WaveSpawner : MonoBehaviour {
         }
 
          _countdown -= Time.deltaTime;
-         _waveCountDownText.text = Mathf.Round(_countdown).ToString();
 
     }
 
