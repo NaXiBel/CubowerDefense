@@ -27,20 +27,29 @@ public class WaveSpawner : MonoBehaviour {
 
     }
 
+    /**
+     * Time.deltatime est le temps passé depuis la dernière frame.
+     * countdown -= Time.deltaTime revient à dire : "Décrémenter de 1 
+     * toutes les secondes".
+     * 
+     * Dès le démarrage, la vague apparaîtra après environ [countdown - val initiale] secondes,
+     * elle se renouvellera toutes les [timeBetweenWaves] secondes.
+     * */
     void Update() {
 
-        if(_currentWave == null) {
+        if (_currentWave == null) {
             SpawnWave();
         } else if (_currentWave.isFinished() && _countdown <= 0f) {
-            SpawnWave();
+            ++_waveIndex;
+            Destroy(_currentWave);
             _countdown = _timeBetweenWaves;
         }
 
-         _countdown -= Time.deltaTime;
+        _countdown -= Time.deltaTime;
 
     }
 
-   
+
     private static void SpawnWave() {
 
         _waveIndex++;
@@ -50,7 +59,7 @@ public class WaveSpawner : MonoBehaviour {
 
         Wave wave = Instantiate(_wavePrefab, _spawnPoint.position, _spawnPoint.rotation).GetComponent<Wave>();
         _currentWave = wave;
-        wave.InitializeWave(waveComponents); 
+        wave.InitializeWave(waveComponents);
 
     }
 

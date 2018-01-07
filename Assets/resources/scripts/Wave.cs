@@ -10,6 +10,9 @@ public class Wave : MonoBehaviour, IObserver {
     private float _countdown = 2f;
     private bool _finished = true;
 
+    private int _enemyTotal = 10;
+    private int _enemySpawned = 0;
+
 
     public void InitializeWave(Dictionary<GameObject, int> enemies) {
         _currentEnemies = new List<Enemy>();
@@ -17,40 +20,45 @@ public class Wave : MonoBehaviour, IObserver {
         _waveComponents = enemies;
 
     }
-    
+
     public bool isFinished() {
         return _finished;
     }
 
     void Update() {
 
-        if(_countdown <= 0f) {
+        if (_enemySpawned < _enemyTotal && _countdown <= 0f) {
             Spawn();
+            _enemySpawned++;
             _countdown = 1f;
         }
 
         _countdown -= Time.deltaTime;
-        
+
 
     }
 
     private void Spawn() {
 
-        Dictionary<GameObject, int>.KeyCollection keyColl = _waveComponents.Keys;
-        Transform spawnPoint = WaveSpawner.GetSpawnPoint();
-        foreach (GameObject g in keyColl) {
-            Enemy enemy = Enemy.Spawn();
-            enemy.AddObserver(this);
+        Enemy enemy = Enemy.Spawn();
+        enemy.AddObserver(this);
 
-            _currentEnemies.Add(enemy);
-            _numberOfEnemies++;
-        }
+        _currentEnemies.Add(enemy);
+        _numberOfEnemies++;
+
     }
 
 
     public void Update(IObservable o) {
-        Debug.Log("Un ennemi a disparu ! ");
-        _currentEnemies.Remove((Enemy)o);
-        --_numberOfEnemies;
+        Debug.Log("NumberOfEnemies : " + _numberOfEnemies);
+        if (_numberOfEnemies > 1) {
+            Debug.Log("Un ennemi a disparu ! ");
+            _currentEnemies.Remove((Enemy)o);
+            --_numberOfEnemies;
+        } else {
+            _finished = true;
+            Debug.Log("La vague est terminée !");
+        }
+
     }
 }
