@@ -24,9 +24,11 @@ public class WaveSpawner : MonoBehaviour {
         _spawnPoint = GameObject.Find("START").transform;
 
 
-
     }
-
+    
+    public static Wave CurrentWave {
+        get { return _currentWave; }
+    }
     /**
      * Time.deltatime est le temps passé depuis la dernière frame.
      * countdown -= Time.deltaTime revient à dire : "Décrémenter de 1 
@@ -37,19 +39,20 @@ public class WaveSpawner : MonoBehaviour {
      * */
     void Update() {
 
-        if (_currentWave == null) {
+        if(_currentWave == null) {
             SpawnWave();
         } else if (_currentWave.isFinished() && _countdown <= 0f) {
             ++_waveIndex;
-            Destroy(_currentWave);
+            Destroy(_currentWave); 
             _countdown = _timeBetweenWaves;
         }
 
-        _countdown -= Time.deltaTime;
+         _countdown -= Time.deltaTime;
+
 
     }
 
-
+   
     private static void SpawnWave() {
 
         _waveIndex++;
@@ -59,7 +62,7 @@ public class WaveSpawner : MonoBehaviour {
 
         Wave wave = Instantiate(_wavePrefab, _spawnPoint.position, _spawnPoint.rotation).GetComponent<Wave>();
         _currentWave = wave;
-        wave.InitializeWave(waveComponents);
+        wave.InitializeWave(waveComponents); 
 
     }
 
