@@ -31,7 +31,8 @@ public class EnemyView : MonoBehaviour {
         _enemyController.Notify();
     }
     public GameObject Instance {
-        set{ _instance = value; }
+        get { return _instance; }
+        set { _instance = value; }
     }
 
     public void Move(Transform nextWaypoint,float speed) {

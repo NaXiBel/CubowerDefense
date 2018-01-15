@@ -28,7 +28,7 @@ public class TurretController {
     public void Notify() {
 
 
-        if(_target != null) {
+        if(_target != null && _target.View.Instance != null) { 
 
             float distanceToEnemy = Utils.GetDistanceToEnemy(this, _target);
 
@@ -60,12 +60,16 @@ public class TurretController {
         float shortestDistance = Mathf.Infinity;
 
         foreach(EnemyController e in w.CurrentEnemies) {
-            float distanceToEnemy = Utils.GetDistanceToEnemy(this, e);
-            if(distanceToEnemy < shortestDistance) {
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = e;
-                
+
+            if(e.View.Instance != null) {
+                float distanceToEnemy = Utils.GetDistanceToEnemy(this, e);
+                if (distanceToEnemy < shortestDistance) {
+                    shortestDistance = distanceToEnemy;
+                    nearestEnemy = e;
+
+                }
             }
+
         }
 
         return nearestEnemy;
