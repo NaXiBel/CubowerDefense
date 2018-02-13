@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 6e311f7f0aaee0a41ab70f18d94e06cf
+timeCreated: 1518450899
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Walkway UltraBold
+  fontNames:
+  - Walkway UltraBold
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

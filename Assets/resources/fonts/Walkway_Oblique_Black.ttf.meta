@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 82f7d9ac96be7784b893bba527788558
+timeCreated: 1518450899
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Walkway Oblique Black
+  fontNames:
+  - Walkway Oblique Black
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
